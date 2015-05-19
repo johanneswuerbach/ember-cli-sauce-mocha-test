@@ -1,0 +1,29 @@
+{
+  "framework": "qunit",
+  "test_page": "tests/index.html?hidepassed",
+  "disable_watching": true,
+  "launch_in_ci": [
+    "PhantomJS",
+    "SL_chrome_public"
+  ],
+  "launch_in_dev": [
+    "PhantomJS",
+    "Chrome"
+  ],
+  "launchers": {
+    "SL_chrome_public": {
+      "exe": "ember",
+      "args": [
+        "sauce:launch",
+        "-b",
+        "chrome",
+        "--vi",
+        "public",
+        "--at",
+        "--no-ct",
+        "--u"
+      ],
+      "protocol": "browser"
+    }
+  }
+}

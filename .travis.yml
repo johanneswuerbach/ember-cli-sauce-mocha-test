@@ -1,0 +1,34 @@
+---
+language: node_js
+node_js:
+  - "0.12"
+
+sudo: false
+
+env:
+  global:
+  - SAUCE_USERNAME=ember-cli-sauce-ci
+  - SAUCE_ACCESS_KEY=be8498f4-3dc5-4256-94c6-40dd9247f2e6
+
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - export PATH=/usr/local/phantomjs-2.0.0/bin:$PATH
+  - "npm config set spin false"
+  - "npm install -g npm@^2"
+
+install:
+  - npm install -g bower
+  - npm install
+  - bower install
+
+before_script:
+  - ember sauce:connect
+
+script:
+  - npm test
+
+after_script:
+  - ember sauce:disconnect
